@@ -43,7 +43,7 @@ export class ProblemBuilder{
         return this;
     }
     public withTimeLimitInMiliseconds(timeLimitInMiliseconds:number):ProblemBuilder{
-        this._problem.timelimitInMiliseconds = timeLimitInMiliseconds;
+        this._problem.timeLimitInMiliseconds = timeLimitInMiliseconds;
         return this;
     }
 

@@ -11,7 +11,7 @@ export class Problem{
         private _examples: Example[], 
         private _constraints: string[],
         private _exampleExplanations: string, 
-        private _timelimitInMiliseconds: number, 
+        private _timeLimitInMiliseconds: number, 
         private _memoryLimitInMegaBytes: number){}
     
     public get exampleExplanations(): string {
@@ -50,12 +50,12 @@ export class Problem{
         this._memoryLimitInMegaBytes = value;
     }
 
-    public get timelimitInMiliseconds(): number {
-        return this._timelimitInMiliseconds;
+    public get timeLimitInMiliseconds(): number {
+        return this._timeLimitInMiliseconds;
     }
 
-    public set timelimitInMiliseconds(value: number) {
-        this._timelimitInMiliseconds = value;
+    public set timeLimitInMiliseconds(value: number) {
+        this._timeLimitInMiliseconds = value;
     }
 
     public get constraints(): string[] {
