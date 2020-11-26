@@ -1,0 +1,80 @@
+<br>
+
+<div class = "row">
+    <div class = "col-12">
+        <h2>{{problem.title}}</h2>
+    </div>
+</div>
+<hr>
+<div class = "row">
+    <div class = "col-12">
+        <p>{{problem.description}}</p>
+    </div>
+</div>
+
+<br>
+
+<div class = "row">
+    <div class = "col-12">
+        <h3>Standard input</h3>
+    </div>
+</div>
+<div class = "row">
+    <div class = "col-12">
+        <p>{{problem.inputFormat}}</p>
+    </div>
+</div>
+
+<br>
+
+<div class = "row">
+    <div class = "col-12">
+        <h3>Standard output</h3>
+    </div>
+</div>
+<div class = "row">
+    <div class = "col-12">
+        <p>{{problem.outputFormat}}</p>
+    </div>
+</div>
+
+<br>
+
+<div class = "row">
+    <div class = "col-12">
+        <h3>Constraints</h3>
+    </div>
+</div>
+<div class = "row">
+    <div class = "col-12">
+        <ul>
+            <li *ngFor = "let constraint of problem.constraints">
+                <p>{{constraint}}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br>
+
+<div class = "row">
+    <div class = "col-12">
+        <h3>Examples</h3>
+    </div>
+</div>
+<div class = "row" *ngFor = "let example of problem.examples">
+    <div class = "col-12">
+        <app-problem-example [input] = "example.inputInHtml" [output] = "example.outputInHtml"></app-problem-example>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col-12">
+        <h3>Explanations</h3>
+        <p>{{problem.exampleExplanations}}</p>
+    </div>
+</div>
+
+<br>
+
+<button class = "btn btn-primary">Submit</button>
