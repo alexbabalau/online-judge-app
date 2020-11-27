@@ -8,6 +8,8 @@ import { ProblemComponent } from './problem/problem.component';
 import { ProblemHeaderComponent } from './problem/problem-header/problem-header.component';
 import { ProblemDescriptionComponent } from './problem/problem-description/problem-description.component';
 import { ProblemExampleComponent } from './problem/problem-description/problem-example/problem-example.component';
+import { ProblemTutorialComponent } from './problem/problem-tutorial/problem-tutorial.component';
+import { ProblemSubmissionComponent } from './problem/problem-submission/problem-submission.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ProblemExampleComponent } from './problem/problem-description/problem-e
     ProblemComponent,
     ProblemHeaderComponent,
     ProblemDescriptionComponent,
-    ProblemExampleComponent
+    ProblemExampleComponent,
+    ProblemTutorialComponent,
+    ProblemSubmissionComponent
   ],
   imports: [
     BrowserModule,
