@@ -24,6 +24,12 @@ export class ProblemService{
         .withExampleExplanations('Cel mai mare divizor comun al numerelor 12 si 42 este 6')
         .withTimeLimitInMiliseconds(250)
         .withMemoryLimitInMegabytes(2)
+        .withTutorial(`Cel mai mare divizor comun dintre doua numere a si b se poate calcula iterativ, 
+            printr-o simpla parcurgere a tuturor numerelor de la 2 la minim(a, b). 
+            Aceasta rezolvare se gaseste aici si obtine 30 de puncte.
+            Pentru a imbunatati timpul de rulare putem folosi algoritmul lui Euclid prin scaderi, 
+            ceea ce duce la obtinerea a 60 de puncte, sau prin impartiri, 
+            solutie ce obtine punctajul maxim`)
         .build()
     ];
 
@@ -31,4 +37,7 @@ export class ProblemService{
         return this._problems[id];
     }
 
+    public getTutorial(id:number):string{
+        return this._problems[id].tutorial;
+    }
 }

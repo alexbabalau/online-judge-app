@@ -5,7 +5,7 @@ export class ProblemBuilder{
     private readonly _problem:Problem;
 
     constructor(){
-        this._problem = new Problem('', '', '', '', [], [], '', 1000, 256);
+        this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '');
     }
 
     public withTitle(title:string): ProblemBuilder{
@@ -49,6 +49,11 @@ export class ProblemBuilder{
 
     public withMemoryLimitInMegabytes(memoryLimitInMegabytes:number):ProblemBuilder{
         this._problem.memoryLimitInMegaBytes = memoryLimitInMegabytes;
+        return this;
+    }
+
+    public withTutorial(tutorial:string):ProblemBuilder{
+        this._problem.tutorial = tutorial;
         return this;
     }
 
