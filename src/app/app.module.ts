@@ -9,7 +9,8 @@ import { ProblemHeaderComponent } from './problem/problem-header/problem-header.
 import { ProblemDescriptionComponent } from './problem/problem-description/problem-description.component';
 import { ProblemExampleComponent } from './problem/problem-description/problem-example/problem-example.component';
 import { ProblemTutorialComponent } from './problem/problem-tutorial/problem-tutorial.component';
-import { ProblemSubmissionComponent } from './problem/problem-submission/problem-submission.component';
+import { SubmissionComponent } from './submission/submission.component';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,19 @@ import { ProblemSubmissionComponent } from './problem/problem-submission/problem
     ProblemDescriptionComponent,
     ProblemExampleComponent,
     ProblemTutorialComponent,
-    ProblemSubmissionComponent
+    SubmissionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HighlightModule
   ],
-  providers: [],
+  providers: [{
+    provide: HIGHLIGHT_OPTIONS,
+    useValue: {
+      fullLibraryLoader: () => import('highlight.js')
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

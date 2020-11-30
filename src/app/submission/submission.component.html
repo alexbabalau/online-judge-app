@@ -1,0 +1,36 @@
+<div class = "row">
+    <div class = "col-12">
+        <table class = "table">
+            <thead>
+                <tr>
+                    <th scope="col">Problem</th>
+                    <th scope="col">Language</th>
+                    <th scope = "col">Score</th>
+                    <th scope = "col">Time</th>
+                    <th scope = "col">Memory</th>
+                    <th scope = "col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{submission.getProblemTitle()}}</td>
+                    <td>{{submission.getLanguage()}}</td>
+                    <td>{{submission.score}}</td>
+                    <td>{{submission.timeInMiliseconds}} ms</td>
+                    <td>{{submission.memoryInMegaBytes}} MB</td>
+                    <td>{{submission.getDateAsString()}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col-12">
+        <pre>
+            <code highlight [highlight] = "submission.getCode()"  [languages] = "['cpp']">
+            
+            </code>
+        </pre>
+    </div>
+</div>

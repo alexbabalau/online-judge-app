@@ -33,11 +33,11 @@ export class ProblemService{
         .build()
     ];
 
-    public getProblem(id:number):Problem{
-        return this._problems[id];
+    public getProblem(problemId:number):Problem{
+        return this._problems[problemId];
     }
 
-    public getTutorial(id:number):string{
-        return this._problems[id].tutorial;
+    public getProblemTutorial(problemId:number):string{
+        return this._problems[problemId].tutorial;
     }
 }

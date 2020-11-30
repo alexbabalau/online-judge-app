@@ -14,7 +14,7 @@ export class ProblemTutorialComponent implements OnInit {
   constructor(private problemService:ProblemService) { }
 
   ngOnInit(): void {
-    this.tutorial = this.problemService.getTutorial(this.id);
+    this.tutorial = this.problemService.getProblemTutorial(this.id);
   }
 
 }
