@@ -14,37 +14,15 @@ export class SubmissionService{
         .withSourceCode(new SourceCodeBuilder()
             .withCode(
             `
-            #include<fstream>
+            #include<iostream>
             using namespace std;
-            ifstream f("euclid2.in");
-            ofstream g("euclid2.out");
-            int t;
-            int Euclid_algorithm(int a,int b)
-            {
-                int r=a%b;
-                while(r!=0)
-                {
-                    a=b;
-                    b=r;
-                    r=a%b;
-                }
-                return(b);
+            int main(){
+                int a, b;
+                cin >> a >> b;
+                cout << a + b << "\\n";
+                return 0;
             }
-            void read_numbers_and_process()
-            {
-                f>>t;
-                int i,val1,val2;
-                for(i=0;i<t;i++)
-                {
-                    f>>val1;
-                    f>>val2;
-                    g<<Euclid_algorithm(val1,val2)<<"\\n";
-                }
-            }
-            int main()
-            {
-                read_numbers_and_process();
-            }`)
+            `)
             .withLanguage('cpp')
             .withSizeInBytes(1024)
             .build())
@@ -55,10 +33,20 @@ export class SubmissionService{
         .build()
     ];
 
-    constructor(){}
+    constructor(){
+        this._submission.push(this._submission[0]);
+    }
 
     public get(submissionId:number):Submission{
         return this._submission[submissionId];
+    }
+
+    public getAllSubmissions():Submission[]{
+        return this._submission;
+    }
+
+    public getSubmissionsFromProblem(problemId:number):Submission[]{
+        return this._submission.filter(submission => submission.getProblemId() === problemId);
     }
     
 }

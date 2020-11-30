@@ -1,6 +1,7 @@
 import { Example } from './example';
 
 export class Problem{
+    
 
     constructor(private _title: string,
         private _description: string,
@@ -11,7 +12,15 @@ export class Problem{
         private _exampleExplanations: string, 
         private _timeLimitInMiliseconds: number, 
         private _memoryLimitInMegaBytes: number,
-        private _tutorial: string){}
+        private _tutorial: string,
+        private _id: number){}
+    
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
+    }
     
     public get tutorial(): string {
         return this._tutorial;

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProblemDescriptionComponent } from './problem/problem-description/problem-description.component';
 import { ProblemTutorialComponent } from './problem/problem-tutorial/problem-tutorial.component';
 import { ProblemComponent } from './problem/problem.component';
+import { SubmissionListComponent } from './submission/submission-list/submission-list.component';
 import { SubmissionComponent } from './submission/submission.component';
 
 const routes: Routes = [
@@ -11,8 +12,9 @@ const routes: Routes = [
     {path:'', redirectTo:'description', pathMatch:'full'},
     {path:'description', component:ProblemDescriptionComponent},
     {path:'tutorial', component:ProblemTutorialComponent},
-    {path:'submission', component:SubmissionComponent}
+    {path:'submission', component:SubmissionListComponent}
   ]},
+  {path:'submission/:id', component:SubmissionComponent}
   
 ];
 

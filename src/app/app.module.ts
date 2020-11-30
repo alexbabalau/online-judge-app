@@ -11,6 +11,7 @@ import { ProblemExampleComponent } from './problem/problem-description/problem-e
 import { ProblemTutorialComponent } from './problem/problem-tutorial/problem-tutorial.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { SubmissionListComponent } from './submission/submission-list/submission-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     ProblemDescriptionComponent,
     ProblemExampleComponent,
     ProblemTutorialComponent,
-    SubmissionComponent
+    SubmissionComponent,
+    SubmissionListComponent
   ],
   imports: [
     BrowserModule,

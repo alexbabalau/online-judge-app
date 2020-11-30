@@ -10,7 +10,7 @@ export class SubmissionBuilder{
     private _submission:Submission;
     
     constructor(){
-        this._submission = new Submission(0, 0, new Date(), new SourceCodeBuilder().build(), new ProblemBuilder().build(), 0);
+        this._submission = new Submission(0, 0, new Date(), new SourceCodeBuilder().build(), new ProblemBuilder().build(), 0, 0);
     }
 
     public withScore(score:number):SubmissionBuilder{

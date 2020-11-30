@@ -2,6 +2,12 @@ import { Problem } from '../problem/problem';
 import { SourceCode } from './source-code';
 
 export class Submission{
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
+    }
     public get score(): number {
         return this._score;
     }
@@ -43,7 +49,8 @@ export class Submission{
         private _date: Date,
         private _sourceCode: SourceCode,
         private _problem: Problem,
-        private _score: number){}
+        private _score: number,
+        private _id: number){}
     
     public getProblemTitle():string{
         return this._problem.title;
@@ -59,5 +66,9 @@ export class Submission{
 
     public getDateAsString():string{
         return this._date.toDateString();
+    }
+
+    public getProblemId():number{
+        return this._problem.id;
     }
 }

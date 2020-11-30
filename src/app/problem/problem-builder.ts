@@ -5,7 +5,7 @@ export class ProblemBuilder{
     private readonly _problem:Problem;
 
     constructor(){
-        this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '');
+        this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '', 0);
     }
 
     public withTitle(title:string): ProblemBuilder{
