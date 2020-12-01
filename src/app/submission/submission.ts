@@ -71,4 +71,8 @@ export class Submission{
     public getProblemId():number{
         return this._problem.id;
     }
+
+    public getSizeInBytes():number{
+        return this._sourceCode.sizeInBytes;
+    }
 }

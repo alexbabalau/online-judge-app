@@ -5,6 +5,7 @@
                 <tr>
                     <th scope="col">Problem</th>
                     <th scope="col">Language</th>
+                    <th scope = "col">Size</th>
                     <th scope = "col">Time</th>
                     <th scope = "col">Memory</th>
                     <th scope = "col">Score</th>
@@ -12,8 +13,9 @@
             </thead>
             <tbody>
                 <tr *ngFor = "let submission of submissions">
-                    <td> <a [routerLink] = "['/submission', submission.id]">{{submission.getProblemTitle()}}</a></td>
+                    <td> <a [routerLink] = "['/problem', submission.getProblemId(), 'description']">{{submission.getProblemTitle()}}</a></td>
                     <td>{{submission.getLanguage()}}</td>
+                    <td> <a [routerLink] = "['/submission', submission.id]">{{submission.getSizeInBytes()}} B</a></td>
                     <td>{{submission.timeInMiliseconds}} ms</td>
                     <td>{{submission.memoryInMegaBytes}} MB</td>
                     <td>{{submission.score}}</td>
