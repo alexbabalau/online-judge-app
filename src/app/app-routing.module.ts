@@ -8,11 +8,11 @@ import { SubmissionComponent } from './submission/submission.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'problem/0', pathMatch:'full'},
-  {path:'problem/:id', component:ProblemComponent, children:[
+  {path:'problem', component:ProblemComponent, children:[
     {path:'', redirectTo:'description', pathMatch:'full'},
-    {path:'description', component:ProblemDescriptionComponent},
-    {path:'tutorial', component:ProblemTutorialComponent},
-    {path:'submission', component:SubmissionListComponent}
+    {path:':id/description', component:ProblemDescriptionComponent},
+    {path:':id/tutorial', component:ProblemTutorialComponent},
+    {path:':id/submission', component:SubmissionListComponent}
   ]},
   {path:'submission/:id', component:SubmissionComponent}
   

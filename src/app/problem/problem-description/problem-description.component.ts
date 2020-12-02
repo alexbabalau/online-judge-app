@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { RouteParameterRetrieverObservable } from 'src/app/shared/route-parameter-retriever-observable';
 import { Problem } from '../problem';
 import { ProblemService } from '../problem.service';
 
@@ -9,15 +11,31 @@ import { ProblemService } from '../problem.service';
 })
 export class ProblemDescriptionComponent implements OnInit {
 
-  id:number = 0;
-
   problem:Problem = null; 
 
-  constructor(private problemService:ProblemService) { }
+  private routeParameterRetrieverObservable:RouteParameterRetrieverObservable = null;
 
-  ngOnInit(): void {
-    this.problem = this.problemService.getProblem(this.id);
-    console.log(this.problem);
+  private handleIdChange():void{
+    let id = this.getId();
+    this.problem = this.problemService.getProblem(id);
   }
+
+  getId():number{
+    return +this.routeParameterRetrieverObservable.parameterValue;
+  }
+
+  constructor(private problemService:ProblemService, private route:ActivatedRoute) {
+    
+  }
+
+    ngOnInit(): void {
+      console.log(this.route);
+      this.routeParameterRetrieverObservable = 
+        RouteParameterRetrieverObservable
+          .fromRouteParameterNameAndNotifyChange(this.route, 'id', this.handleIdChange.bind(this));
+        let id:number = this.getId();
+        this.problem = this.problemService.getProblem(id);
+        console.log(id);
+    }
 
 }
