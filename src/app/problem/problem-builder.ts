@@ -8,6 +8,11 @@ export class ProblemBuilder{
         this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '', 0);
     }
 
+    public withId(id:number):ProblemBuilder{
+        this._problem.id = id;
+        return this;
+    }
+
     public withTitle(title:string): ProblemBuilder{
         this._problem.title = title;
         return this;

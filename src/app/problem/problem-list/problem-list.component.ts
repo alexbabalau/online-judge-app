@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RouteParameterRetrieverObservable } from 'src/app/shared/route-parameter-retriever-observable';
+import { Problem } from '../problem';
+import { ProblemService } from '../problem.service';
 
 @Component({
   selector: 'app-problem-list',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProblemListComponent implements OnInit {
 
-  constructor() { }
+  problems:Problem[] = null;
+
+  constructor(private problemService:ProblemService) { }
 
   ngOnInit(): void {
+    this.problems = this.problemService.getAllProblems();
+    console.log(this.problems);
   }
+
 
 }

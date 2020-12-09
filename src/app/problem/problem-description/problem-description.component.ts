@@ -28,14 +28,14 @@ export class ProblemDescriptionComponent implements OnInit {
     
   }
 
-    ngOnInit(): void {
-      console.log(this.route);
-      this.routeParameterRetrieverObservable = 
-        RouteParameterRetrieverObservable
-          .fromRouteParameterNameAndNotifyChange(this.route, 'id', this.handleIdChange.bind(this));
-        let id:number = this.getId();
-        this.problem = this.problemService.getProblem(id);
-        console.log(id);
-    }
+  ngOnInit(): void {
+    console.log(this.route);
+    this.routeParameterRetrieverObservable = 
+      RouteParameterRetrieverObservable
+        .fromRouteParameterNameAndNotifyChange(this.route.parent, 'id', this.handleIdChange.bind(this));
+      let id:number = this.getId();
+      this.problem = this.problemService.getProblem(id);
+      console.log(id);
+  }
 
 }

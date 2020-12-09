@@ -28,6 +28,7 @@ export class SubmissionService{
             .build())
         .withProblem(new ProblemBuilder()
             .withTitle('Algoritmul lui Euclid')
+            .withId(0)
             .build())
         .withScore(100)
         .build()
