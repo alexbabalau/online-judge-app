@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Example } from './example';
+import { Test } from './test';
 import { Problem } from './problem';
 import { ProblemBuilder } from './problem-builder';
 
@@ -19,8 +19,8 @@ export class ProblemService{
         din perechea de pe linia i+1 din fisierul de intrare.`)
     .addConstraint(`1 <= T <= 100.000`)
     .addConstraint(`Pentru fiecare pereche, 2 <= a, b <= 2 * 10^9`)
-    .addExample(new Example(`3<br>12 42<br>21 7<br>9 10<br>`, `6<br>7<br>1<br>`))
-    .addExample(new Example(`3<br>12 42<br>21 7<br>9 10<br>`, `6<br>7<br>1<br>`))
+    .addExample(new Test(`3<br>12 42<br>21 7<br>9 10<br>`, `6<br>7<br>1<br>`))
+    .addExample(new Test(`3<br>12 42<br>21 7<br>9 10<br>`, `6<br>7<br>1<br>`))
     .withExampleExplanations('Cel mai mare divizor comun al numerelor 12 si 42 este 6')
     .withTimeLimitInMiliseconds(250)
     .withMemoryLimitInMegabytes(2)

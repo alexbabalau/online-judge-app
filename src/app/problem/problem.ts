@@ -1,4 +1,4 @@
-import { Example } from './example';
+import { Test } from './test';
 
 export class Problem{
     
@@ -7,7 +7,7 @@ export class Problem{
         private _description: string,
         private _inputFormat: string,
         private _outputFormat: string,
-        private _examples: Example[], 
+        private _examples: Test[], 
         private _constraints: string[],
         private _exampleExplanations: string, 
         private _timeLimitInMiliseconds: number, 
@@ -81,11 +81,11 @@ export class Problem{
         this._constraints = value;
     }
 
-    public get examples(): Example[] {
+    public get examples(): Test[] {
         return this._examples;
     }
 
-    public set examples(value: Example[]) {
+    public set examples(value: Test[]) {
         this._examples = value;
     }
 
@@ -105,7 +105,7 @@ export class Problem{
         this._title = value;
     }
 
-    public addExample(example:Example):void{
+    public addExample(example:Test):void{
         this._examples.push(example);
     }
 

@@ -1,4 +1,4 @@
-export class Example{
+export class Test{
     constructor (private _inputInHtml:string, private _outputInHtml:string){
 
     }

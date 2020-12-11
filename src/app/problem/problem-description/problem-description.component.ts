@@ -15,7 +15,7 @@ export class ProblemDescriptionComponent implements OnInit {
 
   private routeParameterRetrieverObservable:RouteParameterRetrieverObservable = null;
 
-  private handleIdChange():void{
+  private updateProblem():void{
     let id = this.getId();
     this.problem = this.problemService.getProblem(id);
   }
@@ -29,13 +29,12 @@ export class ProblemDescriptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.route);
+
     this.routeParameterRetrieverObservable = 
       RouteParameterRetrieverObservable
-        .fromRouteParameterNameAndNotifyChange(this.route.parent, 'id', this.handleIdChange.bind(this));
-      let id:number = this.getId();
-      this.problem = this.problemService.getProblem(id);
-      console.log(id);
+        .fromRouteParameterNameAndNotifyChange(this.route.parent, 'id', this.updateProblem.bind(this));
+    
+    this.updateProblem();
   }
 
 }

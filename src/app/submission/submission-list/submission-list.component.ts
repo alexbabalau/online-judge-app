@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RouteParameterRetrieverObservable } from 'src/app/shared/route-parameter-retriever-observable';
 import { Submission } from '../submission';
 import { SubmissionService } from '../submission.service';
 
@@ -11,10 +13,25 @@ export class SubmissionListComponent implements OnInit {
 
   submissions:Submission[] = [];
 
-  constructor(private submissionService:SubmissionService) { }
+  routeParameterRetrieverObservable:RouteParameterRetrieverObservable = null;
+
+  constructor(private submissionService:SubmissionService, private route:ActivatedRoute) { }
+
+  getId():number{
+    return +this.routeParameterRetrieverObservable.parameterValue;
+  }
+
+  updateSubmissions():void{
+    let currentId = this.getId();
+    this.submissions = this.submissionService.getSubmissionsFromProblem(currentId);
+  }
 
   ngOnInit(): void {
-    this.submissions = this.submissionService.getAllSubmissions();
+    this.routeParameterRetrieverObservable = 
+      RouteParameterRetrieverObservable
+        .fromRouteParameterNameAndNotifyChange(this.route.parent, 'id', this.updateSubmissions.bind(this));
+    
+    this.updateSubmissions();
   }
 
 }

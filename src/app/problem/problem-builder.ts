@@ -1,4 +1,4 @@
-import { Example } from './example';
+import { Test } from './test';
 import { Problem } from './problem';
 
 export class ProblemBuilder{
@@ -33,7 +33,7 @@ export class ProblemBuilder{
         return this;
     }
 
-    public withExamples(examples:Example[]): ProblemBuilder{
+    public withExamples(examples:Test[]): ProblemBuilder{
         this._problem.examples = examples;
         return this;
     }
@@ -62,7 +62,7 @@ export class ProblemBuilder{
         return this;
     }
 
-    public addExample(example:Example): ProblemBuilder{
+    public addExample(example:Test): ProblemBuilder{
         this._problem.addExample(example);
         return this;
     }
