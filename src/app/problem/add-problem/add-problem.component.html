@@ -1,0 +1,119 @@
+<br>
+<h2>Add a problem</h2>
+<br>
+
+<div class = "row">
+    <div class = "col-12">
+        <form (ngSubmit) = "onSubmit()" [formGroup] = "problemForm">
+            
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="timeLimit">Time Limit in ms <span style="color:red">*</span></label>
+                        <input type = "text" class = "form-control" id="timeLimit" formControlName = "timeLimit"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="memoryLimit">Memory Limit in MB <span style="color:red">*</span></label>
+                        <input type = "text" class = "form-control" id="memoryLimit" formControlName = "memoryLimit"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="title">Title <span style="color:red">*</span></label>
+                        <input type = "text" class = "form-control" id="title" formControlName = "title"/>
+                    </div>
+                </div>
+            </div>
+        
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="description">Problem Description <span style="color:red">*</span></label>
+                        <quill-editor  id="description" formControlName = "description"></quill-editor>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="inputFormat">Standard Input <span style="color:red">*</span></label>
+                        <quill-editor  id="inputFormat" formControlName = "inputFormat"></quill-editor>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="outputFormat">Standard Output <span style="color:red">*</span></label>
+                        <quill-editor  id="outputFormat" formControlName = "outputFormat"></quill-editor>
+                    </div>
+                </div>
+            </div>
+            
+            <div class = "row" formArrayName = "constraints">
+                <div class = "col-12">
+                    <button type = "button" class = "btn btn-success" (click) = "onAddConstraint()">Add Constraint</button>
+                    <div class = "row" *ngFor = "let constraint of getConstraintControls(); let i = index;" [formGroupName] = "i" style = "margin-top : 10px;">
+                        <div class = "col-10">
+                            <quill-editor [classes] = "'form-control'" [styles] = "{height:'70px'}" formControlName = "constraint"></quill-editor>
+                        </div>
+                        <div class = "col-2">
+                            <button type = "button" class = "btn btn-danger" (click) = "onDeleteConstraint(i)">Delete</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class = "row" formArrayName = "examples">
+                <div class = "col-12">
+                    <button type = "button" class = "btn btn-success" (click) = "onAddExample()">Add Example</button>
+                    <div class = "form-row" *ngFor = "let example of getExampleControls(); let i = index;" [formGroupName] = "i" style = "margin-top : 10px;">
+                        
+                            <div class = "form-group col-5">
+                                <textarea class = "form-control" formControlName = "input" rows = "6"></textarea>
+                            </div>
+                            <div class = "form-group col-5">
+                                <textarea class = "form-control" formControlName = "output" rows = "6"></textarea>
+                            </div>
+                            <div class = "form-group col-2">
+                                <button type = "button" class = "btn btn-danger" (click) = "onDeleteExample(i)">Delete</button>
+                            </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="explanations">Example Explanations</label>
+                        <quill-editor  id="explanations" formControlName = "exampleExplanations"></quill-editor>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-xs-12">
+                    <div class = "form-group">
+                        <label for="tutorial">Tutorial</label>
+                        <quill-editor  id="tutorial" formControlName = "tutorial"></quill-editor>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <button type = "submit" class = "btn btn-primary" [disabled] = "problemForm.invalid">Submit</button>
+        </form>
+    </div>
+    
+</div>
+

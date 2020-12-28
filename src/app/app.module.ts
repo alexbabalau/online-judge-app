@@ -13,6 +13,9 @@ import { SubmissionComponent } from './submission/submission.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { SubmissionListComponent } from './submission/submission-list/submission-list.component';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
+import { AddProblemComponent } from './problem/add-problem/add-problem.component';
+import { QuillModule } from 'ngx-quill'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +28,16 @@ import { ProblemListComponent } from './problem/problem-list/problem-list.compon
     ProblemTutorialComponent,
     SubmissionComponent,
     SubmissionListComponent,
-    ProblemListComponent
+    ProblemListComponent,
+    AddProblemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HighlightModule
+    HighlightModule,
+    FormsModule,
+    ReactiveFormsModule,
+    QuillModule.forRoot()
   ],
   providers: [{
     provide: HIGHLIGHT_OPTIONS,

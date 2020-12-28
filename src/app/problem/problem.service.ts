@@ -16,12 +16,12 @@ export class ProblemService{
         Urmatoarele T linii contin cate doua numere naturale a si b.`)
     .withOutputFormat(`In fisierul de iesire euclid2.out se vor scrie T linii.
         A i-a linie din acest fisier contine cel mai mare divizor comun al numerelor
-        din perechea de pe linia i+1 din fisierul de intrare.`)
-    .addConstraint(`1 <= T <= 100.000`)
-    .addConstraint(`Pentru fiecare pereche, 2 <= a, b <= 2 * 10^9`)
+        din perechea de pe linia i+1 din fisierul de intrare.</p>`)
+    .addConstraint(`<p>1 <= T <= 100.000</p>`)
+    .addConstraint(`<p>Pentru fiecare pereche, 2 <= a, b <= 2 * 10^9</p>`)
     .addExample(new Test(`3<br>12 42<br>21 7<br>9 10<br>`, `6<br>7<br>1<br>`))
     .addExample(new Test(`3<br>12 42<br>21 7<br>9 10<br>`, `6<br>7<br>1<br>`))
-    .withExampleExplanations('Cel mai mare divizor comun al numerelor 12 si 42 este 6')
+    .withExampleExplanations('<p>Cel mai mare divizor comun al numerelor 12 si 42 este 6</p>')
     .withTimeLimitInMiliseconds(250)
     .withMemoryLimitInMegabytes(2)
     .withTutorial(`Cel mai mare divizor comun dintre doua numere a si b se poate calcula iterativ, 
@@ -44,7 +44,7 @@ export class ProblemService{
     ];
 
     public getProblem(problemId:number):Problem{
-        return this._problems[problemId];
+        return this._problems.filter(problem => problem.id === problemId)[0];
     }
 
     public getProblemTutorial(problemId:number):string{
@@ -53,5 +53,9 @@ export class ProblemService{
 
     public getAllProblems():Problem[]{
         return this._problems;
+    }
+
+    public addProblem(problem:Problem):void{
+        this._problems.push(problem);
     }
 }
