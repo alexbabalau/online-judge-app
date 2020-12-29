@@ -17,7 +17,7 @@ export class AddProblemComponent implements OnInit {
 
   constructor(private problemService:ProblemService, private route:ActivatedRoute, private router:Router) { }
 
-  ngOnInit(): void {
+  private initForm():void{
     this.problemForm = new FormGroup({
       'timeLimit': new FormControl(null, Validators.pattern('[0-9]+')),
       'memoryLimit': new FormControl(null, Validators.pattern('[0-9]+')),
@@ -32,65 +32,21 @@ export class AddProblemComponent implements OnInit {
     });
   }
 
-  getConstraintControls(){
-    return (<FormArray>this.problemForm.get('constraints')).controls;
+  ngOnInit(): void {
+    this.initForm();
   }
 
-  onAddConstraint():void{
-    (<FormArray> this.problemForm.get('constraints')).push(new FormGroup({
-      'constraint': new FormControl(null, Validators.required)
-    }));
-  }
-
-  getExampleControls(){
-    return (<FormArray>this.problemForm.get('examples')).controls;
-  }
-
-  onAddExample():void{
-    (<FormArray> this.problemForm.get('examples')).push(new FormGroup({
-      'input': new FormControl(null, Validators.required),
-      'output': new FormControl(null, Validators.required)
-    }));
-  }
-
-  onDeleteExample(index:number):void{
-    (<FormArray>this.problemForm.get('examples')).removeAt(index);
-  }
-
-  onDeleteConstraint(index:number):void{
-    (<FormArray>this.problemForm.get('constraints')).removeAt(index);
-  }
-
-  private getConstraintsFromForm():string[]{
-    return this.problemForm.value['constraints'].map(({'constraint':constraint}) => constraint);
-  }
-
-  private getExamplesFromForm():Test[]{
-    return this.problemForm.value['examples'].map(({'input':input, 'output':output}) => new Test(input, output));
-  }
-
-  private createProblemFromForm():Problem{
-    return new ProblemBuilder()
-      .withTimeLimitInMiliseconds(+this.problemForm.value['timeLimit'])
-      .withMemoryLimitInMegabytes(+this.problemForm.value['memoryLimit'])
-      .withTitle(this.problemForm.value['title'])
-      .withDescription(this.problemForm.value['description'])
-      .withInputFormat(this.problemForm.value['inputFormat'])
-      .withOutputFormat(this.problemForm.value['outputFormat'])
-      .withConstraints(this.getConstraintsFromForm())
-      .withExamples(this.getExamplesFromForm())
-      .withExampleExplanations(this.problemForm.value['exampleExplanations'])
-      .withTutorial(this.problemForm.value['tutorial'])
-      .withId(Math.floor(Math.random() * 1000))
+  private addRandomIdToProblem(problem:Problem):void{
+      new ProblemBuilder(problem)
+      .withId(Math.floor(Math.random() * 10000))
       .build();
   }
 
-  onSubmit():void{
-    if(this.problemForm.valid){
-      const problem:Problem = this.createProblemFromForm();
-      this.problemService.addProblem(problem);
-      this.router.navigate(['../problem-list', {relativeTo:this.route}]);
-    }
-    
+  onSubmit(problem:Problem):void{
+    this.addRandomIdToProblem(problem);
+    this.problemService.addProblem(problem);
+    this.router.navigate(['../problem-list'], {relativeTo:this.route});
   }
+
+
 }

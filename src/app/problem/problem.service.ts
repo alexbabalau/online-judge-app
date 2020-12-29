@@ -48,7 +48,7 @@ export class ProblemService{
     }
 
     public getProblemTutorial(problemId:number):string{
-        return this._problems[problemId].tutorial;
+        return this.getProblem(problemId).tutorial;
     }
 
     public getAllProblems():Problem[]{
@@ -57,5 +57,15 @@ export class ProblemService{
 
     public addProblem(problem:Problem):void{
         this._problems.push(problem);
+    }
+
+    public updateProblem(problemId:number, newValue:Problem){
+        for(let i = 0; i < this._problems.length; i += 1){
+            const problem = this._problems[i];
+            if(problem.id === problemId){
+                this._problems[i] = newValue;
+                break;
+            }
+        }
     }
 }

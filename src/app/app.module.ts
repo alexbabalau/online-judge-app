@@ -16,6 +16,8 @@ import { ProblemListComponent } from './problem/problem-list/problem-list.compon
 import { AddProblemComponent } from './problem/add-problem/add-problem.component';
 import { QuillModule } from 'ngx-quill'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditProblemComponent } from './problem/edit-problem/edit-problem.component';
+import { ProblemFormComponent } from './problem/problem-form/problem-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SubmissionComponent,
     SubmissionListComponent,
     ProblemListComponent,
-    AddProblemComponent
+    AddProblemComponent,
+    EditProblemComponent,
+    ProblemFormComponent
   ],
   imports: [
     BrowserModule,

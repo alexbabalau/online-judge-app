@@ -4,8 +4,11 @@ import { Problem } from './problem';
 export class ProblemBuilder{
     private readonly _problem:Problem;
 
-    constructor(){
-        this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '', 0);
+    constructor(problem?:Problem){
+        if(problem)
+            this._problem = problem;
+        else
+            this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '', 0);
     }
 
     public withId(id:number):ProblemBuilder{

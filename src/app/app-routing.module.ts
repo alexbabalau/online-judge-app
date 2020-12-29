@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddProblemComponent } from './problem/add-problem/add-problem.component';
+import { EditProblemComponent } from './problem/edit-problem/edit-problem.component';
 import { ProblemDescriptionComponent } from './problem/problem-description/problem-description.component';
 import { ProblemListComponent } from './problem/problem-list/problem-list.component';
 import { ProblemTutorialComponent } from './problem/problem-tutorial/problem-tutorial.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
     {path:'', redirectTo:'description', pathMatch:'full'},
     {path:'description', component:ProblemDescriptionComponent},
     {path:'tutorial', component:ProblemTutorialComponent},
-    {path:'submission', component:SubmissionListComponent}
+    {path:'submission', component:SubmissionListComponent},
+    {path:'edit', component:EditProblemComponent}
   ]},
   {path:'submission/:id', component:SubmissionComponent}
   

@@ -5,7 +5,8 @@
         <br>
         <ul class = "list-group">
             <li class = "list-group-item" *ngFor = "let problem of problems">
-                <a [routerLink] = "['/problem', problem.id]">{{problem.title}}</a>
+                <a [routerLink] = "['/problem', problem.id, 'description']">{{problem.title}}</a>
+                <a class = "float-right" [routerLink] = "['/problem', problem.id, 'edit']">Edit</a>
             </li>
         </ul>
     </div>
