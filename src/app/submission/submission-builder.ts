@@ -43,6 +43,11 @@ export class SubmissionBuilder{
         return this;
     }
 
+    public withId(id:number):SubmissionBuilder{
+        this._submission.id = id;
+        return this;
+    }
+
     public build():Submission{
         return this._submission;
     }

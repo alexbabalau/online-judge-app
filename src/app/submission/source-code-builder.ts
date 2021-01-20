@@ -5,7 +5,7 @@ export class SourceCodeBuilder{
     private _sourceCode:SourceCode;
 
     constructor(){
-        this._sourceCode = new SourceCode(0, '', '');
+        this._sourceCode = new SourceCode(0, 'cpp', '');
     }
 
     public withSizeInBytes(sizeInBytes:number):SourceCodeBuilder{

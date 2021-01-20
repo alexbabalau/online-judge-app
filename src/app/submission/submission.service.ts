@@ -39,7 +39,7 @@ export class SubmissionService{
     }
 
     public get(submissionId:number):Submission{
-        return this._submission[submissionId];
+        return this._submission.filter(submission => submission.id == submissionId)[0];
     }
 
     public getAllSubmissions():Submission[]{
@@ -49,6 +49,8 @@ export class SubmissionService{
     public getSubmissionsFromProblem(problemId:number):Submission[]{
         return this._submission.filter(submission => submission.getProblemId() === problemId);
     }
-    
+    public addSubmission(submission:Submission):void{
+        this._submission.push(submission);
+    }
     
 }
