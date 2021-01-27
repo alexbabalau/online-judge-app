@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormFileChangeHandler } from 'src/app/shared/form-file-change-handler';
 import { RouteParameterRetrieverObservable } from 'src/app/shared/route-parameter-retriever-observable';
 import { SourceSubmissionService } from 'src/app/shared/source-submission.service';
 import { SubmissionService } from 'src/app/submission/submission.service';
@@ -16,7 +17,7 @@ export class ProblemDescriptionComponent implements OnInit {
 
   problem:Problem = null; 
   submitForm:FormGroup = null;
-
+  formFileChangeHandler:FormFileChangeHandler = new FormFileChangeHandler();
 
   private routeParameterRetrieverObservable:RouteParameterRetrieverObservable = null;
 
@@ -54,22 +55,18 @@ export class ProblemDescriptionComponent implements OnInit {
     this.initForm();
   }
 
-  onFileChange(event) {
-    const reader = new FileReader();
- 
-    if(event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
+  private saveFileContentInForm(reader):void{
+    
+      this.submitForm.patchValue({
+        'solutionFile': reader.result
+      });
   
-      reader.onload = () => {
-        this.submitForm.patchValue({
-          'solutionFile': reader.result
-       });
-      
-        // need to run CD since file load runs outside of zone
-        this.changeDetector.markForCheck();
-      };
-    }
+      this.changeDetector.markForCheck();
+
+  }
+
+  onFileChange(event) {
+    this.formFileChangeHandler.handleFileChange(event, this.saveFileContentInForm.bind(this));
   }
 
   onSubmit():void{

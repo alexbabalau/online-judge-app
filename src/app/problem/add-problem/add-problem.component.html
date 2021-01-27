@@ -1,5 +1,10 @@
 <br>
 <h2>Add a problem</h2>
 <br>
-
-<app-problem-form [problemForm] = "problemForm" (submitEvent) = "onSubmit($event)"></app-problem-form>
+<div *ngIf = "!addTestsMode">
+    <app-problem-form [problemForm] = "problemForm" (submitEvent) = "onSubmitProblemDetails($event)"></app-problem-form>
+</div>
+<div *ngIf = "addTestsMode">
+    <button class = "btn btn-dark" (click) = "goBackToAddDescription()">Back to problem description</button>
+    <app-add-tests-form [testsForm] = "testsForm" (submitEvent) = "onSubmitTests($event)"></app-add-tests-form>
+</div>

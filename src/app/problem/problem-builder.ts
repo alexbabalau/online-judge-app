@@ -6,9 +6,19 @@ export class ProblemBuilder{
 
     constructor(problem?:Problem){
         if(problem)
-            this._problem = problem;
+            this._problem = problem.clone();
         else
-            this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '', 0);
+            this._problem = new Problem('', '', '', '', [], [], '', 1000, 256, '', 0, []);
+    }
+
+    public withTests(tests:Test[]):ProblemBuilder{
+        this._problem.tests = tests;
+        return this;
+    }
+
+    public addTest(test:Test):ProblemBuilder{
+        this._problem.tests.push(test);
+        return this;
     }
 
     public withId(id:number):ProblemBuilder{

@@ -5,6 +5,8 @@ import { ProblemBuilder } from '../problem-builder';
 import { Problem } from '../problem';
 import { Test } from '../test';
 import { HtmlTextConverter } from '../html-text-converter';
+import { ProblemFromFormCreator } from 'src/app/shared/object-from-form-creation/problem-from-form-creator';
+import { ObjectFromFormCreator } from 'src/app/shared/object-from-form-creation/object-from-form-creator.interface';
 
 @Component({
   selector: 'app-problem-form',
@@ -15,7 +17,7 @@ export class ProblemFormComponent implements OnInit {
 
   @Input() problemForm:FormGroup;
   @Output() submitEvent:EventEmitter<Problem> = new EventEmitter<Problem>();
-
+  problemFromFormCreator:ObjectFromFormCreator = new ProblemFromFormCreator();
 
   constructor() { }
 
@@ -51,33 +53,9 @@ export class ProblemFormComponent implements OnInit {
     (<FormArray>this.problemForm.get('constraints')).removeAt(index);
   }
 
-  private getConstraintsFromForm():string[]{
-    return this.problemForm.value['constraints'].map(({'constraint':constraint}) => constraint);
-  }
-
-  private getExamplesFromForm():Test[]{
-    let htmlTextConverter:HtmlTextConverter = new HtmlTextConverter();
-    return this.problemForm.value['examples'].map(({'input':input, 'output':output}) => new Test(htmlTextConverter.addLineBreaks(input), htmlTextConverter.addLineBreaks(output)));
-  }
-
-  private createProblemFromForm():Problem{
-    return new ProblemBuilder()
-      .withTimeLimitInMiliseconds(+this.problemForm.value['timeLimit'])
-      .withMemoryLimitInMegabytes(+this.problemForm.value['memoryLimit'])
-      .withTitle(this.problemForm.value['title'])
-      .withDescription(this.problemForm.value['description'])
-      .withInputFormat(this.problemForm.value['inputFormat'])
-      .withOutputFormat(this.problemForm.value['outputFormat'])
-      .withConstraints(this.getConstraintsFromForm())
-      .withExamples(this.getExamplesFromForm())
-      .withExampleExplanations(this.problemForm.value['exampleExplanations'])
-      .withTutorial(this.problemForm.value['tutorial'])
-      .build();
-  }
-
   onSubmit():void{
     if(this.problemForm.valid){
-      const problem = this.createProblemFromForm();
+      const problem = this.problemFromFormCreator.create(this.problemForm);
       console.log(problem);
       this.submitEvent.emit(problem);
     }

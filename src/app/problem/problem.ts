@@ -13,8 +13,33 @@ export class Problem{
         private _timeLimitInMiliseconds: number, 
         private _memoryLimitInMegaBytes: number,
         private _tutorial: string,
-        private _id: number){}
+        private _id: number,
+        private _tests:Test[]){}
     
+    public clone():Problem{
+        //return new Problem(this._title, 
+        //    this._description,
+        //    this._inputFormat,
+        //    this._outputFormat,
+        //    this._examples,
+        //    this._constraints,
+        //    this._exampleExplanations,
+        //    this._timeLimitInMiliseconds,
+        //    this._memoryLimitInMegaBytes,
+        //    this._tutorial,
+        //    this._id,
+        //    this._tests);
+        return Object.create(this);
+    }
+
+    public get tests():Test[]{
+        return this._tests;
+    }
+
+    public set tests(tests:Test[]){
+        this._tests = tests;
+    }
+
     public get id(): number {
         return this._id;
     }

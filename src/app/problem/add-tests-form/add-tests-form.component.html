@@ -1,0 +1,20 @@
+<h2>Add tests for the problem</h2>
+<div class="row">
+    <div class="col-12">
+        <form (ngSubmit) = "onSubmit()" [formGroup] = "testsForm">
+            <div *ngFor = "let test of getTestsControls(); let i = index" class = "row">
+                <div class="form-group">
+                    <div class="col-6">
+                        <label>Input</label>
+                        <input type="file" class = "form-control-file" (change)="onFileChange(i, 'input', $event)"/>
+                    </div>
+                    <div class="col-6">
+                        <label>Output</label>
+                        <input type="file" class="form-control-file" (change)="onFileChange(i, 'output', $event)"/>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
